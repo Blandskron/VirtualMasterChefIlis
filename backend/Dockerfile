@@ -1,5 +1,5 @@
 FROM openjdk:11-jre-slim
 WORKDIR /app
-COPY target/virtual-master-chef.jar /app/virtual-master-chef.jar
+COPY target/virtual-master-chef-1.0-SNAPSHOT.jar /app/virtual-master-chef-1.0-SNAPSHOT.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "virtual-master-chef.jar"]
+ENTRYPOINT ["java", "-jar", "virtual-master-chef-1.0-SNAPSHOT.jar"]
