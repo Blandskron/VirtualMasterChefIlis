@@ -1,0 +1,187 @@
+{
+    "info": {
+      "name": "VirtualMasterChef API",
+      "_postman_id": "b7f77b7c-95cb-42d7-8f71-9b1e5f7ab0fd",
+      "description": "Colección de API para VirtualMasterChef",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get All Recipes",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/recipes",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "recipes"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Recipe by ID",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/recipes/:id",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "recipes",
+              ":id"
+            ],
+            "variable": [
+              {
+                "key": "id",
+                "value": "1",
+                "description": "ID de la receta"
+              }
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Create Recipe (CHEF Only)",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"nombre\": \"Paella\",\n    \"descripcion\": \"Paella tradicional de mariscos\",\n    \"ingredientes\": [\n        \"Arroz\",\n        \"Mariscos\",\n        \"Pimientos\",\n        \"Azafrán\"\n    ],\n    \"instrucciones\": \"Cocinar el arroz y añadir mariscos.\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8080/recipes",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "recipes"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Recipe (CHEF Only)",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"nombre\": \"Paella Valenciana\",\n    \"descripcion\": \"Paella con pollo y conejo\",\n    \"ingredientes\": [\n        \"Arroz\",\n        \"Pollo\",\n        \"Conejo\",\n        \"Judía verde\",\n        \"Azafrán\"\n    ],\n    \"instrucciones\": \"Cocinar el arroz y añadir pollo y conejo.\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8080/recipes/:id",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "recipes",
+              ":id"
+            ],
+            "variable": [
+              {
+                "key": "id",
+                "value": "1",
+                "description": "ID de la receta"
+              }
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Delete Recipe (CHEF Only)",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/recipes/:id",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "recipes",
+              ":id"
+            ],
+            "variable": [
+              {
+                "key": "id",
+                "value": "1",
+                "description": "ID de la receta"
+              }
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Rate Recipe",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:8080/recipes/:id/rate?rating=5",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "recipes",
+              ":id",
+              "rate"
+            ],
+            "query": [
+              {
+                "key": "rating",
+                "value": "5"
+              }
+            ],
+            "variable": [
+              {
+                "key": "id",
+                "value": "1",
+                "description": "ID de la receta"
+              }
+            ]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  

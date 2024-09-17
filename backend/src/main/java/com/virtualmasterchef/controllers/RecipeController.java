@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/recipes")
@@ -36,17 +37,17 @@ public class RecipeController {
         return ResponseEntity.ok(recipes);
     }
 
-    // Obtener receta por ID
+    // Obtener receta por ID (usando UUID)
     @GetMapping("/{id}")
-    public ResponseEntity<Recipe> getRecipeById(@PathVariable Long id) {
+    public ResponseEntity<Recipe> getRecipeById(@PathVariable UUID id) {
         Optional<Recipe> recipe = recipeRepository.findById(id);
         return recipe.map(ResponseEntity::ok)
                      .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Actualizar receta (solo CHEF)
+    // Actualizar receta (usando UUID)
     @PutMapping("/{id}")
-    public ResponseEntity<Recipe> updateRecipe(@AuthenticationPrincipal User user, @PathVariable Long id, @RequestBody Recipe recipeDetails) {
+    public ResponseEntity<Recipe> updateRecipe(@AuthenticationPrincipal User user, @PathVariable UUID id, @RequestBody Recipe recipeDetails) {
         if (user == null || !user.getRole().equals("CHEF")) {
             return ResponseEntity.status(403).build(); // Forbidden para usuarios que no son CHEF
         }
@@ -65,9 +66,9 @@ public class RecipeController {
         return ResponseEntity.ok(updatedRecipe);
     }
 
-    // Eliminar receta (solo CHEF)
+    // Eliminar receta (usando UUID)
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRecipe(@AuthenticationPrincipal User user, @PathVariable Long id) {
+    public ResponseEntity<Void> deleteRecipe(@AuthenticationPrincipal User user, @PathVariable UUID id) {
         if (user == null || !user.getRole().equals("CHEF")) {
             return ResponseEntity.status(403).build(); // Forbidden para usuarios que no son CHEF
         }
@@ -80,9 +81,9 @@ public class RecipeController {
         return ResponseEntity.ok().build();
     }
 
-    // Valorar receta (acceso para VISITOR y CHEF)
+    // Valorar receta (usando UUID)
     @PostMapping("/{id}/rate")
-    public ResponseEntity<Recipe> rateRecipe(@PathVariable Long id, @RequestParam Integer rating) {
+    public ResponseEntity<Recipe> rateRecipe(@PathVariable UUID id, @RequestParam Integer rating) {
         Optional<Recipe> optionalRecipe = recipeRepository.findById(id);
         if (optionalRecipe.isEmpty()) {
             return ResponseEntity.notFound().build();
