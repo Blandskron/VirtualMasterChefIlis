@@ -1,13 +1,13 @@
 com\virtualmasterchef\controllers\UserController.class
 com\virtualmasterchef\controllers\RecipeController.class
+com\virtualmasterchef\dto\UserDTO.class
 com\virtualmasterchef\config\SecurityConfig.class
 com\virtualmasterchef\VirtualMasterChefApplication.class
 com\virtualmasterchef\models\User.class
-com\virtualmasterchef\dtos\RecipeDTO.class
 com\virtualmasterchef\models\Recipe.class
 com\virtualmasterchef\config\SwaggerConfig.class
 com\virtualmasterchef\repositories\UserRepository.class
+com\virtualmasterchef\dto\RecipeDTO.class
 com\virtualmasterchef\services\UserService.class
-com\virtualmasterchef\dtos\UserDTO.class
 com\virtualmasterchef\repositories\RecipeRepository.class
 com\virtualmasterchef\services\RecipeService.class

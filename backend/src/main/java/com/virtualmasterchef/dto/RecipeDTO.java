@@ -1,4 +1,4 @@
-package com.virtualmasterchef.dtos;
+package com.virtualmasterchef.dto;
 
 import java.util.List;
 import java.util.UUID;

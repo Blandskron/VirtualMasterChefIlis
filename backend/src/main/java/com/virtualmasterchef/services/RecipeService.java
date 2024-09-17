@@ -1,6 +1,6 @@
 package com.virtualmasterchef.services;
 
-import com.virtualmasterchef.dtos.RecipeDTO;
+import com.virtualmasterchef.dto.RecipeDTO;
 import com.virtualmasterchef.models.Recipe;
 import com.virtualmasterchef.models.User;
 import com.virtualmasterchef.repositories.RecipeRepository;

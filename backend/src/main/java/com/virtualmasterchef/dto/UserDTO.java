@@ -1,21 +1,11 @@
-package com.virtualmasterchef.dtos;
-
-import java.util.UUID;
+package com.virtualmasterchef.dto;
 
 public class UserDTO {
-
-    private UUID id;
     private String username;
-    private String role;  // "CHEF" o "VISITOR"
+    private String password;
+    private String role;
 
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    // Getters y setters
 
     public String getUsername() {
         return username;
@@ -23,6 +13,14 @@ public class UserDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRole() {
