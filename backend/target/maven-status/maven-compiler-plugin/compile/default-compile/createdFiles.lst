@@ -1,1 +1,10 @@
+com\virtualmasterchef\controllers\UserController.class
+com\virtualmasterchef\controllers\RecipeController.class
+com\virtualmasterchef\config\SecurityConfig.class
 com\virtualmasterchef\VirtualMasterChefApplication.class
+com\virtualmasterchef\services\UserService.class
+com\virtualmasterchef\models\User.class
+com\virtualmasterchef\repositories\RecipeRepository.class
+com\virtualmasterchef\models\Recipe.class
+com\virtualmasterchef\config\SwaggerConfig.class
+com\virtualmasterchef\repositories\UserRepository.class
