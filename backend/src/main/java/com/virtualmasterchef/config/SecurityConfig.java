@@ -3,13 +3,7 @@ package com.virtualmasterchef.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-
 
 @Configuration
 public class SecurityConfig {
@@ -17,21 +11,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests((authz) -> authz
-                .requestMatchers("/recipes/**").hasRole("CHEF")
-                .anyRequest().authenticated()
+            .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF para desarrollo local
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/h2-console/**").permitAll()  // Permitir acceso a la consola H2
+                .anyRequest().authenticated()  // Otras rutas requieren autenticación
             )
-            .httpBasic();
+            // Deshabilitar protecciones de cabeceras para H2
+            .headers(headers -> headers
+                .frameOptions(frameOptions -> frameOptions.disable()) // Permitir uso de la consola H2
+            )
+            .formLogin(login -> login  // Usar configuración de login predeterminada
+                .permitAll()  // Permitir acceso al formulario de login
+            );
 
         return http.build();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        User.UserBuilder users = User.withDefaultPasswordEncoder();
-        UserDetails chef = users.username("chef").password("password").roles("CHEF").build();
-        UserDetails visitor = users.username("visitor").password("password").roles("VISITOR").build();
-        return new InMemoryUserDetailsManager(chef, visitor);
     }
 }
