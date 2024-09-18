@@ -16,6 +16,7 @@ public class Recipe {
     @Size(min = 3, max = 100)
     private String nombre;
 
+    @Size(max = 500)  // Aumenta el límite de la descripción a 500 caracteres
     private String descripcion;
 
     @ElementCollection
