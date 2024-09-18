@@ -16,27 +16,16 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    // Codificador de contraseñas
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    // Método para registrar un usuario
     public User registerUser(UserDTO userDTO) {
-        try {
-            User user = new User();
-            user.setUsername(userDTO.getUsername());
-            // Codificar la contraseña antes de guardarla
-            // user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-            user.setPassword(userDTO.getPassword()); // sin codificación para prueba
-            user.setRole(userDTO.getRole());
-            return userRepository.save(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;  // Para ver si se captura algún error
-        }
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setRole(userDTO.getRole());
+        return userRepository.save(user);
     }
-    
 
-    // Implementación del método de Spring Security para cargar un usuario por nombre de usuario
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)

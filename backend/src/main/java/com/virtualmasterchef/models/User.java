@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -27,8 +26,9 @@ public class User implements UserDetails {
 
     private String role; // "CHEF" o "VISITOR"
 
-    @OneToMany(mappedBy = "chef")
-    private List<Recipe> recipes;
+    // Relación One-to-Many con la clase Recipe
+    @OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
+    private List<Recipe> recipes;  // <-- Aquí está la variable recipes
 
     // Implementación de los métodos de la interfaz UserDetails
 
@@ -94,10 +94,10 @@ public class User implements UserDetails {
     }
 
     public List<Recipe> getRecipes() {
-        return recipes;
+        return recipes;  // <-- Getter de recipes
     }
 
     public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
+        this.recipes = recipes;  // <-- Setter de recipes
     }
 }

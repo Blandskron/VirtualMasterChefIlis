@@ -7,6 +7,35 @@
   },
   "item": [
     {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"username\": \"newUser\", \"password\": \"password123\", \"role\": \"CHEF\" }"
+        },
+        "url": {
+          "raw": "http://localhost:8081/users/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "users",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "Get All Recipes",
       "request": {
         "method": "GET",
@@ -144,7 +173,7 @@
       "response": []
     },
     {
-      "name": "Rate Recipe",
+      "name": "Rate Recipe (Visitor Only)",
       "request": {
         "method": "POST",
         "header": [
@@ -177,35 +206,6 @@
               "value": "1",
               "description": "ID de la receta"
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Register User",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{ \"username\": \"newUser\", \"password\": \"password123\", \"role\": \"CHEF\" }"
-        },
-        "url": {
-          "raw": "http://localhost:8081/users/register",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8081",
-          "path": [
-            "users",
-            "register"
           ]
         }
       },
