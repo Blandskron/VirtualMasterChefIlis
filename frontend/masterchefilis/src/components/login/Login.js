@@ -16,40 +16,28 @@ function Login() {
       password: password
     };
 
-    axios.post('http://localhost:8081/api/auth/login', loginData)
+    // Hacer la solicitud de login con withCredentials: true
+    axios.post('http://localhost:8081/api/auth/login', loginData, { withCredentials: true })
       .then(response => {
-        // Guardar el token o cualquier otro indicador de éxito (depende de la API)
-        localStorage.setItem('token', response.data);
-        navigate('/recetas');  // Redirigir a la página de recetas después de un login exitoso
+        console.log('Usuario autenticado exitosamente!');
+        navigate('/recetas');  // Redirigir a la página de recetas
       })
-      .catch(error => {
-        setError('Error en el inicio de sesión. Por favor, verifica tus credenciales.');
+      .catch(() => {
+        setError('Error en el inicio de sesión. Verifica tus credenciales.');
       });
   };
 
   return (
     <div className="container">
-      <h2 className="mt-4">Inicio de Sesión</h2>
+      <h2>Inicio de Sesión</h2>
       <form onSubmit={handleLogin}>
         <div className="form-group">
           <label>Usuario</label>
-          <input
-            type="text"
-            className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+          <input type="text" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </div>
         <div className="form-group">
           <label>Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         {error && <p className="text-danger">{error}</p>}
         <button type="submit" className="btn btn-primary mt-3">Iniciar Sesión</button>

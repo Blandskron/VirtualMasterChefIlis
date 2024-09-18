@@ -4,32 +4,24 @@ import { useNavigate } from 'react-router-dom';
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    
-    if (!token) {
-      navigate('/login');
-      return;
-    }
-
-    axios.get('http://localhost:8081/api/recetas', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
+    // Hacer la solicitud con withCredentials para enviar cookies de sesión
+    axios.get('http://localhost:8081/api/recetas', { withCredentials: true })
       .then(response => {
         setRecipes(response.data);
       })
-      .catch(error => {
-        console.error("Error al obtener las recetas:", error);
+      .catch(() => {
+        setError('Error al obtener las recetas. Verifica tu autenticación.');
       });
   }, [navigate]);
 
   return (
     <div className="container">
-      <h2 className="mt-4">Lista de Recetas</h2>
+      <h2>Lista de Recetas</h2>
+      {error && <p className="text-danger">{error}</p>}
       <ul className="list-group">
         {recipes.map(recipe => (
           <li key={recipe.id} className="list-group-item">
