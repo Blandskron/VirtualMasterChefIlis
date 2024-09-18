@@ -14,6 +14,8 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF para desarrollo local
             .authorizeHttpRequests(auth -> auth
+                // Permitir acceso público a la ruta de registro de usuarios
+                .requestMatchers("/users/register").permitAll()
                 // Usamos AntPathRequestMatcher para rutas que no siguen el patrón MVC
                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()  // Permitir acceso a la consola H2
                 .anyRequest().authenticated()  // Cualquier otra ruta requiere autenticación

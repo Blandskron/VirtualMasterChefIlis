@@ -21,13 +21,20 @@ public class UserService implements UserDetailsService {
 
     // Método para registrar un usuario
     public User registerUser(UserDTO userDTO) {
-        User user = new User();
-        user.setUsername(userDTO.getUsername());
-        // Codificar la contraseña antes de guardarla
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setRole(userDTO.getRole());
-        return userRepository.save(user);
+        try {
+            User user = new User();
+            user.setUsername(userDTO.getUsername());
+            // Codificar la contraseña antes de guardarla
+            // user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+            user.setPassword(userDTO.getPassword()); // sin codificación para prueba
+            user.setRole(userDTO.getRole());
+            return userRepository.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;  // Para ver si se captura algún error
+        }
     }
+    
 
     // Implementación del método de Spring Security para cargar un usuario por nombre de usuario
     @Override
