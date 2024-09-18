@@ -1,5 +1,6 @@
 package com.virtualmasterchef.service;
 
+import com.virtualmasterchef.dto.UserDTO;
 import com.virtualmasterchef.model.User;
 import com.virtualmasterchef.model.Role;
 import com.virtualmasterchef.repository.UserRepository;
@@ -53,6 +54,21 @@ public class UserService implements UserDetailsService {
         if (!roleRepository.existsById("visitor")) {
             roleRepository.save(new Role("visitor"));
         }
+    }
+
+    // Método para registrar un nuevo usuario
+    public void registerNewUser(UserDTO userDTO) {
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword())); // Codifica la contraseña
+
+        Set<Role> roles = new HashSet<>();
+        String roleName = userDTO.getRole() != null ? userDTO.getRole() : "visitor";
+        Role role = roleRepository.findById(roleName).orElse(new Role(roleName));
+        roles.add(role);
+        user.setRoles(roles);
+
+        userRepository.save(user);  // Guarda el usuario en la base de datos
     }
 
     @Override
