@@ -1,49 +1,52 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+const ChefDashboard = () => {
+  const [recipes, setRecipes] = useState([]);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    const loginData = {
-      username: username,
-      password: password
-    };
-
-    // Hacer la solicitud de login con withCredentials: true
-    axios.post('http://localhost:8081/api/auth/login', loginData, { withCredentials: true })
-      .then(response => {
-        console.log('Usuario autenticado exitosamente!');
-        navigate('/recetas');  // Redirigir a la página de recetas
-      })
-      .catch(() => {
-        setError('Error en el inicio de sesión. Verifica tus credenciales.');
-      });
+  const fetchRecipes = async () => {
+    const response = await axios.get('http://localhost:8081/api/recetas');
+    setRecipes(response.data);
   };
+
+  const deleteRecipe = async (id) => {
+    await axios.delete(`http://localhost:8081/api/recetas/${id}`);
+    fetchRecipes();
+  };
+
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
 
   return (
     <div className="container">
-      <h2>Inicio de Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label>Usuario</label>
-          <input type="text" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
+      <h2>Chef Dashboard</h2>
+      <div className="row">
+        <div className="col-md-12">
+          <button className="btn btn-primary" onClick={() => window.location.href = '/create-recipe'}>Create Recipe</button>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Recipe Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipes.map(recipe => (
+                <tr key={recipe.id}>
+                  <td>{recipe.nombre}</td>
+                  <td>
+                    <button className="btn btn-warning" onClick={() => window.location.href = `/edit-recipe/${recipe.id}`}>Edit</button>
+                    <button className="btn btn-danger" onClick={() => deleteRecipe(recipe.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <div className="form-group">
-          <label>Contraseña</label>
-          <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        {error && <p className="text-danger">{error}</p>}
-        <button type="submit" className="btn btn-primary mt-3">Iniciar Sesión</button>
-      </form>
+      </div>
     </div>
   );
-}
+};
 
-export default Login;
+export default ChefDashboard;

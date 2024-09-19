@@ -1,19 +1,23 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Register from '../components/register/register';
+import Login from '../components/login/Login';
+import ChefDashboard from '../components/dashboardChef/crudChef';
+import VisitorDashboard from '../components/dashboardVisitor/dashboardVisitor';
 
-function App() {
-  const navigate = useNavigate();
-
-  // Redirigir a la página de inicio de sesión por defecto
-  React.useEffect(() => {
-    navigate('/login');
-  }, [navigate]);
-
+const App = () => {
   return (
-    <div className="container">
-      <h1 className="text-center mt-4">Bienvenido a la Aplicación de Recetas</h1>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/chef-dashboard" element={<ChefDashboard />} />
+          <Route path="/visitor-dashboard" element={<VisitorDashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
