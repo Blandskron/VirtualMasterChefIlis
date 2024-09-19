@@ -28,7 +28,7 @@ const ChefDashboard = () => {
   // Función para obtener las recetas del API
   const fetchRecipes = async () => {
     try {
-      const response = await axios.get('http://localhost:8081/api/recetas', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/recetas`, {
         headers: {
           Authorization: authHeader, // Enviar autenticación básica
         },
@@ -44,7 +44,7 @@ const ChefDashboard = () => {
   const createRecipe = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8081/api/recetas', newRecipe, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/recetas`, newRecipe, {
         headers: {
           Authorization: authHeader,
         },
@@ -69,7 +69,7 @@ const ChefDashboard = () => {
   // Función para eliminar una receta
   const deleteRecipe = async (id) => {
     try {
-      await axios.delete(`http://localhost:8081/api/recetas/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/recetas/${id}`, {
         headers: {
           Authorization: authHeader,
         },
@@ -82,17 +82,17 @@ const ChefDashboard = () => {
     }
   };
 
-  // Función para desloguear al usuario
-  const handleLogout = () => {
-    localStorage.clear(); // Limpiar el localStorage
-    navigate('/'); // Redirigir a la página de inicio
-  };
+    // Función para desloguear al usuario
+    const handleLogout = () => {
+      localStorage.clear(); // Limpiar el localStorage
+      navigate('/'); // Redirigir a la página de inicio
+    };
 
   // Función para actualizar una receta
   const updateRecipe = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8081/api/recetas/${selectedRecipe.id}`, selectedRecipe, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/recetas/${selectedRecipe.id}`, selectedRecipe, {
         headers: {
           Authorization: authHeader,
         },
@@ -121,17 +121,17 @@ const ChefDashboard = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
-        <div className="d-flex justify-content-between">
-        <h2>Chef Dashboard</h2>
-        <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+    <div className="chef-dashboard-container container mt-5">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="dashboard-title">Panel del Chef</h2>
+        <button className="btn btn-danger" onClick={handleLogout}>Cerrar Sesión</button>
       </div>
 
       {error && <div className="alert alert-danger">{error}</div>}
 
       {/* Formulario para crear una nueva receta */}
       {!editMode && (
-        <div className="card mb-4">
+        <div className="card recipe-form-card mb-4">
           <div className="card-body">
             <h5 className="card-title">Crear Nueva Receta</h5>
             <form onSubmit={createRecipe}>
@@ -213,7 +213,7 @@ const ChefDashboard = () => {
 
       {/* Formulario para editar una receta si estamos en modo edición */}
       {editMode && selectedRecipe && (
-        <div className="card mb-4">
+        <div className="card recipe-form-card mb-4">
           <div className="card-body">
             <h5 className="card-title">Editar Receta</h5>
             <form onSubmit={updateRecipe}>
@@ -321,7 +321,7 @@ const ChefDashboard = () => {
       <div className="row">
         {recipes.map((recipe) => (
           <div className="col-md-4" key={recipe.id}>
-            <div className="card mb-4">
+            <div className="card recipe-card mb-4">
               <div className="card-body">
                 <h5 className="card-title">{recipe.nombre}</h5>
                 <p className="card-text"><strong>Descripción:</strong> {recipe.descripcion}</p>

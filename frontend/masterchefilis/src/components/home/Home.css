@@ -1,0 +1,50 @@
+/* Estilos de la página de inicio */
+.home-container {
+    height: 100vh; /* Hace que ocupe toda la altura de la pantalla */
+    background-color: #343a40; /* Fondo oscuro para darle un estilo elegante */
+    color: white; /* Texto en blanco para contrastar con el fondo */
+  }
+  
+  .brand-name {
+    color: #ffbf00; /* Color dorado para destacar el nombre de la marca */
+    font-weight: bold;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8); /* Color ligeramente más claro para el texto */
+  }
+  
+  .btn-primary {
+    background-color: #ffbf00;
+    border-color: #ffbf00;
+    margin: 5px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+  
+  .btn-outline-light {
+    border-color: white;
+    color: white;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: white;
+    color: #ffbf00;
+    border-color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .home-container {
+      padding: 20px;
+    }
+  
+    .btn-lg {
+      width: 100%; /* Hace que los botones ocupen toda la anchura en pantallas pequeñas */
+      margin-bottom: 10px;
+    }
+  }
+  

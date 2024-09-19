@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './VisitorDashboard.css';
 
 const VisitorDashboard = () => {
   const [recipes, setRecipes] = useState([]);
@@ -17,7 +18,7 @@ const VisitorDashboard = () => {
   // Función para obtener las recetas del API
   const fetchRecipes = async () => {
     try {
-      const response = await axios.get('http://localhost:8081/api/recetas', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/recetas`, {
         headers: {
           Authorization: authHeader, // Enviar autenticación básica
         },
@@ -38,7 +39,7 @@ const VisitorDashboard = () => {
   // Función para votar una receta
   const voteRecipe = async (id, voteType) => {
     try {
-      await axios.post(`http://localhost:8081/api/recetas/${id}/${voteType}`, {}, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/recetas/${id}/${voteType}`, {}, {
         headers: {
           Authorization: authHeader, // Enviar autenticación básica
         },
@@ -57,10 +58,10 @@ const VisitorDashboard = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <div className="d-flex justify-content-between">
-        <h2>Visitor Dashboard</h2>
-        <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+    <div className="visitor-dashboard-container container mt-5">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="dashboard-title">Panel de Visitantes</h2>
+        <button className="btn btn-danger" onClick={handleLogout}>Cerrar Sesión</button>
       </div>
 
       {error && <div className="alert alert-danger">{error}</div>}
@@ -73,7 +74,7 @@ const VisitorDashboard = () => {
       <div className="row">
         {recipes.map((recipe) => (
           <div className="col-md-4" key={recipe.id}>
-            <div className="card mb-4">
+            <div className="card recipe-card mb-4">
               <div className="card-body">
                 <h5 className="card-title">{recipe.nombre}</h5>
                 <p className="card-text"><strong>Descripción:</strong> {recipe.descripcion}</p>
@@ -93,15 +94,15 @@ const VisitorDashboard = () => {
                 <p>{recipe.instrucciones}</p>
 
                 {/* Botones para votar */}
-                <div className="btn-group" role="group">
+                <div className="btn-group mt-3" role="group">
                   <button
-                    className="btn btn-success"
+                    className="btn btn-success btn-vote"
                     onClick={() => voteRecipe(recipe.id, 'positivo')}
                   >
                     Me gusta 👍 (+1)
                   </button>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-danger btn-vote"
                     onClick={() => voteRecipe(recipe.id, 'negativo')}
                   >
                     No me gusta 👎 (-2)
