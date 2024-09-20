@@ -6,18 +6,17 @@ import ChefDashboard from '../components/dashboardChef/ChefDashboard';
 import VisitorDashboard from '../components/dashboardVisitor/VisitorDashboard';
 import Home from '../components/home/Home';
 
+
 const App = () => {
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} /> {/* Ruta de la página de inicio */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/chef-dashboard" element={<ChefDashboard />} />
-          <Route path="/visitor-dashboard" element={<VisitorDashboard />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} /> {/* Ruta de la página de inicio */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/chef-dashboard" element={<ChefDashboard />} />
+        <Route path="/visitor-dashboard" element={<VisitorDashboard />} />
+      </Routes>
     </Router>
   );
 };

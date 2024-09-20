@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Register.css';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -41,17 +40,17 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container d-flex align-items-center justify-content-center">
+    <div className="bg-dark vh-100 d-flex align-items-center justify-content-center">
       <div className="col-md-6">
-        <div className="card register-card">
+        <div className="card bg-dark text-white border-warning">
           <div className="card-body">
-            <h2 className="card-title text-center mb-4">Crear Cuenta</h2>
+            <h2 className="card-title text-center mb-4 text-warning">Crear Cuenta</h2>
             <form onSubmit={handleRegister}>
               <div className="form-group mb-3">
-                <label>Nombre de usuario</label>
+                <label className="text-warning">Nombre de usuario</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control bg-dark text-white border-warning"
                   placeholder="Ingresa tu nombre de usuario"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -59,10 +58,10 @@ const Register = () => {
                 />
               </div>
               <div className="form-group mb-3">
-                <label>Contraseña</label>
+                <label className="text-warning">Contraseña</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control bg-dark text-white border-warning"
                   placeholder="Ingresa tu contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -70,9 +69,9 @@ const Register = () => {
                 />
               </div>
               <div className="form-group mb-4">
-                <label>Rol</label>
+                <label className="text-warning">Rol</label>
                 <select
-                  className="form-control"
+                  className="form-control bg-dark text-white border-warning"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                   required
@@ -81,14 +80,14 @@ const Register = () => {
                   <option value="chef">Chef</option>
                 </select>
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+              <button type="submit" className="btn btn-warning w-100">
                 Registrar
               </button>
             </form>
           </div>
         </div>
       </div>
-    </div>
+    </div>  
   );
 };
 
