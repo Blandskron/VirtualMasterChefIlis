@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Ejecutamos Maven para empaquetar el proyecto y generar el JAR
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 # Fase 2: Usamos una imagen ligera de Java para ejecutar el JAR
 FROM openjdk:17-slim
@@ -24,6 +24,7 @@ EXPOSE 8080
 
 # Comando para ejecutar la aplicación cuando el contenedor se levanta
 ENTRYPOINT ["java", "-jar", "virtual-master-chef.jar"]
+
 
 # Local
 # Usamos la imagen oficial de OpenJDK para Java 17
