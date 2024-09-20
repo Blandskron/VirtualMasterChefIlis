@@ -17,9 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
         CorsConfiguration configuration = new CorsConfiguration();
         
         // Local
-        // configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
         // Produccion
-        configuration.setAllowedOrigins(List.of("https://virtualmasterchefilis.blandskron.com"));
+        //configuration.setAllowedOrigins(List.of("https://virtualmasterchefilis.blandskron.com"));
         
         // Métodos permitidos
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
