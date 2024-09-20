@@ -29,7 +29,7 @@ Virtual Master Chef es una plataforma donde los chefs pueden crear y modificar r
 **Backend**: Java Spring Boot \
 **Base de Datos**: PostgreSQL
 
-> Aquí puedes ver un video explicativo del proyecto: [Link al video](https://link-to-video.com)
+> Aquí puedes ver un video explicativo del proyecto: [Link al video](https://youtu.be/d6o20GVlyVU)
 
 ---
 
