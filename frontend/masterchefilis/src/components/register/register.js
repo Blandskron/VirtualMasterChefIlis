@@ -20,8 +20,8 @@ const Register = () => {
     // Determinamos el endpoint en función del rol
     const endpoint =
       role === 'chef'
-        ? 'http://localhost:8081/api/auth/register/chef'
-        : 'http://localhost:8081/api/auth/register/general'; // Endpoint para visitors
+        ? `${process.env.REACT_APP_API_URL}/api/auth/register/chef`
+        : `${process.env.REACT_APP_API_URL}/api/auth/register/general`; // Endpoint para visitors
 
     try {
       // Realizamos la petición con el endpoint correcto
@@ -40,55 +40,54 @@ const Register = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4">Register</h2>
-              <form onSubmit={handleRegister}>
-                <div className="form-group mb-3">
-                  <label>Username</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter your username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="form-group mb-4">
-                  <label>Role</label>
-                  <select
-                    className="form-control"
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                  >
-                    <option value="visitor">Visitor</option>
-                    <option value="chef">Chef</option>
-                  </select>
-                </div>
-                <button type="submit" className="btn btn-primary w-100">
-                  Register
-                </button>
-              </form>
-            </div>
+    <div className="bg-dark vh-100 d-flex align-items-center justify-content-center">
+      <div className="col-md-6">
+        <div className="card bg-dark text-white border-warning">
+          <div className="card-body">
+            <h2 className="card-title text-center mb-4 text-warning">Crear Cuenta</h2>
+            <form onSubmit={handleRegister}>
+              <div className="form-group mb-3">
+                <label className="text-warning">Nombre de usuario</label>
+                <input
+                  type="text"
+                  className="form-control bg-dark text-white border-warning"
+                  placeholder="Ingresa tu nombre de usuario"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label className="text-warning">Contraseña</label>
+                <input
+                  type="password"
+                  className="form-control bg-dark text-white border-warning"
+                  placeholder="Ingresa tu contraseña"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-4">
+                <label className="text-warning">Rol</label>
+                <select
+                  className="form-control bg-dark text-white border-warning"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                >
+                  <option value="visitor">Visitante</option>
+                  <option value="chef">Chef</option>
+                </select>
+              </div>
+              <button type="submit" className="btn btn-warning w-100">
+                Registrar
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
+    </div>  
   );
 };
 
