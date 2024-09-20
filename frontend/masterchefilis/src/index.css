@@ -1,0 +1,89 @@
+/* index.css */
+
+/* Reset de márgenes y padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  background-color: #f4f4f9; /* Fondo suave */
+  color: #333; /* Color de texto estándar */
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+button, .btn {
+  border-radius: 50px; /* Botones con bordes redondeados */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+p {
+  margin: 10px 0;
+}
+
+/* Botones con efecto hover */
+button:hover, .btn:hover {
+  opacity: 0.9;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos de link */
+a {
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Flexbox para centrar el contenido */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Ajustes de estilo de las tarjetas */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Ajustes para pantalla pequeña */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}

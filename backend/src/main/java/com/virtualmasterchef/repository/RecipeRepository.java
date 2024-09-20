@@ -1,6 +1,6 @@
-package com.virtualmasterchef.repositories;
+package com.virtualmasterchef.repository;
 
-import com.virtualmasterchef.models.Recipe;
+import com.virtualmasterchef.model.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
