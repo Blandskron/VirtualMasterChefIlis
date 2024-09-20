@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './ChefDashboard.css';
 
 const ChefDashboard = () => {
   const [recipes, setRecipes] = useState([]);
