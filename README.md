@@ -1,4 +1,4 @@
-# Virtual Master Chef 🍽️
+sss# Virtual Master Chef 🍽️
 
 Bienvenido a **Virtual Master Chef**, una plataforma culinaria interactiva donde los chefs y los visitantes pueden interactuar, crear y votar por sus recetas favoritas. Este proyecto está compuesto por un **Frontend** en **React**, un **Backend** en **Java Spring Boot** y una base de datos **PostgreSQL**. Todo el sistema está dockerizado para facilitar la configuración y despliegue.
 
@@ -6,8 +6,8 @@ Bienvenido a **Virtual Master Chef**, una plataforma culinaria interactiva donde
 - **Backend en producción (Swagger UI)**: [https://virtualmasterchefilis.onrender.com/swagger-ui/index.html#/](https://virtualmasterchefilis.onrender.com/swagger-ui/index.html#/)
 - **Base de datos en producción**: Desplegada también en **Render**.
 
-![Frontend](./path-to-frontend-image.png) <!-- Imagen del frontend -->
-![Backend](./path-to-backend-image.png) <!-- Imagen del backend -->
+![Frontend](https://img.blandskron.com/var/albums/Captura%20de%20pantalla%202024-09-19%20225407.png?m=1726797323) <!-- Imagen del frontend -->
+![Backend](https://img.blandskron.com/var/albums/Captura%20de%20pantalla%202024-09-19%20225423.png?m=1726797323) <!-- Imagen del backend -->
 
 ## Tabla de Contenidos
 - [Descripción del Proyecto](#descripción-del-proyecto)
