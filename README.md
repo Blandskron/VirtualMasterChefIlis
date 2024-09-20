@@ -1,4 +1,4 @@
-sss# Virtual Master Chef 🍽️
+# Virtual Master Chef 🍽️
 
 Bienvenido a **Virtual Master Chef**, una plataforma culinaria interactiva donde los chefs y los visitantes pueden interactuar, crear y votar por sus recetas favoritas. Este proyecto está compuesto por un **Frontend** en **React**, un **Backend** en **Java Spring Boot** y una base de datos **PostgreSQL**. Todo el sistema está dockerizado para facilitar la configuración y despliegue.
 
